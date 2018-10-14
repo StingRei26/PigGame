@@ -139,7 +139,7 @@ i {
 
 .btn-new { top: 45px;}
 .btn-roll { top: 403px;}
-.btn-hold { top: 467px;}
+.btn-hold { top: 443px;}
 
 .dice {
     position: absolute;
@@ -161,3 +161,18 @@ i {
 
 .winner { background-color: #f7f7f7; }
 .winner .player-name { font-weight: 300; color: #EB4D4D; }
+
+
+.score {
+    margin-left: 44%;
+    position: relative;
+    bottom: 112px;
+    border: 1px solid #EB4D4D;
+    width: 127px;
+    height: 30px;  
+    font-weight:bold; 
+}
+
+input { 
+    text-align: center; 
+}
