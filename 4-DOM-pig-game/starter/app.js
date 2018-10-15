@@ -10,7 +10,7 @@ GAME RULES:
 */
 
 
-var scores, roundScore, activePlayer, gamePlaying; 
+var scores, roundScore, activePlayer, gamePlaying, score; 
 
 init(); 
 
@@ -41,25 +41,9 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
      } else {
     //Next player 
     nextplayer();
-    }
+    
 
-
-    
-    
-    
-    //If 2x6 are rolled player losses entire score
-    // var dice_1 = function() {
-    //     if (dice = 6) {
-    //         alert("dice1 = 6");
-    //     }
-    // }
-    
-    // var dice_2 = function() {
-    //     if (dice2 = 6) {
-    //          alert("dice2 = 6");
-    //     }
-    // }
-    
+       }
 
     }
 });
@@ -79,7 +63,9 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
 
 // Check if player won game
 
-if (scores[activePlayer] >= 20) {
+
+
+if (scores[activePlayer] >= score) {
     document.querySelector('#name-' + activePlayer).textContent = "WINNER!";
     document.querySelector('.dice').style.display = 'none';
     document.querySelector('.dice2').style.display = 'none';
@@ -95,7 +81,8 @@ if (scores[activePlayer] >= 20) {
 
 });
 
- function nextplayer () {activePlayer === 0 ? activePlayer = 1 : activePlayer = 0; 
+
+function nextplayer () {activePlayer === 0 ? activePlayer = 1 : activePlayer = 0; 
     roundScore = 0;
     document.getElementById('current-0').textContent = '0'; 
     document.getElementById('current-1').textContent = '0'
@@ -112,6 +99,7 @@ function init(){
     roundScore = 0;
     activePlayer = 0; 
     gamePlaying = true;
+    score = document.getElementById("score").value; 
     document.querySelector('.dice').style.display ='none'; 
     document.querySelector('.dice2').style.display ='none'; 
     document.getElementById('score-0').textContent = '0'; 
@@ -125,6 +113,16 @@ function init(){
     document.querySelector('.player-0-panel').classList.remove('active');
     document.querySelector('.player-1-panel').classList.remove('active');
     document.querySelector('.player-0-panel').classList.add('active');   
+    
+        
+    
+
+
+
+
+
+
+
 }
 
 
@@ -138,7 +136,7 @@ Change the game to follow these rules:
 (Hint: Always save the previous dice roll in a separate variable)
 
 
-
+///COMPLATED 
 2. Add an input field to the HTML where players can set the winning score, so that they can change the predefined score of 100. 
 (Hint: you can read that value with the .value property in JavaScript. This is a good oportunity to use google to figure this out :)
 
