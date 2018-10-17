@@ -14,6 +14,8 @@ var scores, roundScore, activePlayer, gamePlaying, score;
 
 init(); 
 
+var lastDice; 
+
 document.querySelector('.btn-roll').addEventListener('click', function() {
 
     if (gamePlaying) {
@@ -33,20 +35,35 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     diceDom.src = 'dice-' + dice2 + '.png'; 
 
 
-    // 3. Update the round score IF the rolled number is NOT a 1
-    if (dice !==1 && dice2 !==1){
+    // 3. Update the round score IF the rolled number is NOT a 1 //// also added part one of the challange 
+    
+    if (dice === 6 && lastDice === 6){
+    //Player looses score
+
+    scores[activePlayer] = 0;
+    document.querySelector('#score-' + activePlayer).textContent = 0;
+    nextplayer(); 
+    
+    } else if (dice !==1 && dice2 !==1){
     //Add score 
     roundScore += (dice + dice2); 
     document.querySelector('#current-' + activePlayer).textContent = roundScore
      } else {
+
     //Next player 
     nextplayer();
     
+  } 
+    // 4 player loses score if he roles 2x6 in a row 
 
-       }
+    lastDice = dice; 
+   
 
-    }
+
+
+     }
 });
+
 
 
 
@@ -62,8 +79,6 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
     document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
 // Check if player won game
-
-
 
 if (scores[activePlayer] >= score) {
     document.querySelector('#name-' + activePlayer).textContent = "WINNER!";
@@ -124,7 +139,11 @@ function init(){
 YOUR 3 CHALLENGES
 Change the game to follow these rules:
 
-1. A player looses his ENTIRE score when he rolls two 6 in a row. After that, it's the next player's turn. 
+-1. A player looses his ENTIRE score when he rolls two 6 in a row. 
+
+-After that, it's the next player's turn. 
+
+
 (Hint: Always save the previous dice roll in a separate variable)
 
 
