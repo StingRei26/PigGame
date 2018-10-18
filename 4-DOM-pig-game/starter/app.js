@@ -41,7 +41,8 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     //Player looses score
 
     scores[activePlayer] = 0;
-    document.querySelector('#score-' + activePlayer).textContent = 0;
+    document.querySelector('#score-' + activePlayer).textContent = '0';
+    
     nextplayer(); 
     
     } else if (dice !==1 && dice2 !==1){
